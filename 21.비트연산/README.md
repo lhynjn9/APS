@@ -27,7 +27,7 @@
 
   
 
-- Binary Conting
+- Binary Counting
 
   ```python
   arr = [1, 2, 3, 4]
