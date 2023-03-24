@@ -1,26 +1,25 @@
-import copy
 import sys
 sys.stdin = open('input.txt')
 
 N = int(input())
-res = 'YES'
-prime = []
 
 for i in range(N):
+    res = 'YES'
     S = int(input())
-    lst = [True] * ((10^6)+1)
+    lst = [True] * ((10**6)+1)
+    m = int((10**6)**0.5)
 
-    for j in range(2, (10^6)+1):
-        if lst[j]: # 소수의 배수는 소수가 아님
-            for k in range(2*j, (10^6)+1, j):
+    # 소수 판별
+    for j in range(2, m+1):
+        if lst[j]:
+            for k in range(2*j, (10**6)+1, j):
                 lst[k] = False
 
-        if lst[j]:
-            prime.append(j)
+    prime = [i for i in range(2, (10**6)+1) if lst[i] == True]
 
     for a in prime:
         if S % a == 0:
             res = 'NO'
+            break
 
-    print(prime)
     print(res)
